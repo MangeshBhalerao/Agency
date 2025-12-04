@@ -1,26 +1,55 @@
+/* Import Tailwind CSS utilities */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Global reset for all elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Enable smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Set base styles for body - black background and white text */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Scrollbar thumb (draggable part) with white gradient */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+  border-radius: 5px;
+}
+
+/* Scrollbar thumb on hover - lighter gradient */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #cccccc 0%, #666666 100%);
+}
+
+/* Responsive utilities for mobile devices */
+@media (max-width: 768px) {
+  /* Show flex items on mobile */
+  .md\:flex {
+    display: flex !important;
+  }
+  
+  /* Hide items on mobile */
+  .md\:hidden {
+    display: none !important;
+  }
 }

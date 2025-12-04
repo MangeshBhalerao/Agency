@@ -1,13 +1,18 @@
 'use client';
 
+// Import necessary dependencies for animations and icons
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Navigation bar component with glassmorphic design
 export default function Navbar() {
+  // State to track if page has been scrolled
   const [isScrolled, setIsScrolled] = useState(false);
+  // State to control mobile menu visibility
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Effect to handle scroll events and update navbar appearance
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -16,6 +21,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Navigation menu items
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
@@ -24,6 +30,7 @@ export default function Navbar() {
     { label: 'Contact', href: '#contact' },
   ];
 
+  // Function to smoothly scroll to a section
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -33,6 +40,7 @@ export default function Navbar() {
   };
 
   return (
+    // Fixed navigation container
     <nav
       style={{
         position: 'fixed',
@@ -74,17 +82,17 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              fontSize: '1.75rem',
+              fontWeight: '700',
+              fontFamily: 'Horizon, var(--font-montserrat), sans-serif',
+              color: '#ffffff',
               cursor: 'pointer',
+              letterSpacing: '4px',
+              textTransform: 'uppercase',
             }}
             onClick={() => scrollToSection('#home')}
           >
-            AGENCY
+            HORIZON
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -129,7 +137,7 @@ export default function Navbar() {
                     left: 0,
                     width: '0%',
                     height: '2px',
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    background: '#ffffff',
                     transition: 'width 0.3s ease',
                   }}
                   className="nav-underline"
@@ -144,8 +152,8 @@ export default function Navbar() {
               onClick={() => scrollToSection('#contact')}
               style={{
                 padding: '0.75rem 1.5rem',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                color: '#fff',
+                background: '#ffffff',
+                color: '#000000',
                 border: 'none',
                 borderRadius: '8px',
                 fontSize: '0.9rem',
@@ -155,7 +163,7 @@ export default function Navbar() {
               }}
               onMouseEnter={(e) => {
                 e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.4)';
+                e.target.style.boxShadow = '0 10px 25px rgba(255, 255, 255, 0.3)';
               }}
               onMouseLeave={(e) => {
                 e.target.style.transform = 'translateY(0)';
@@ -240,8 +248,8 @@ export default function Navbar() {
                 onClick={() => scrollToSection('#contact')}
                 style={{
                   padding: '0.75rem 1.5rem',
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                  color: '#fff',
+                  background: '#ffffff',
+                  color: '#000000',
                   border: 'none',
                   borderRadius: '8px',
                   fontSize: '1rem',
