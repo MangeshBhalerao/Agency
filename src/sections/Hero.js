@@ -114,7 +114,7 @@ export default function Hero() {
           zIndex: 10,
           maxWidth: '1280px',
           margin: '0 auto',
-          padding: '2rem 1.5rem',
+          padding: 'clamp(2rem, 5vw, 4rem) 1.5rem',
           textAlign: 'center',
         }}
       >
@@ -214,17 +214,19 @@ export default function Hero() {
             gap: '1rem',
             justifyContent: 'center',
             flexWrap: 'wrap',
+            alignItems: 'center',
           }}
+          className="hero-buttons"
         >
           <button
             onClick={scrollToContact}
             style={{
-              padding: '1.25rem 2.5rem',
+              padding: 'clamp(1rem, 2vw, 1.25rem) clamp(1.5rem, 4vw, 2.5rem)',
               background: '#ffffff',
               color: '#000000',
               border: '2px solid #ffffff',
               borderRadius: '0',
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: '700',
               cursor: 'pointer',
               display: 'inline-flex',
@@ -234,6 +236,7 @@ export default function Hero() {
               boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
               letterSpacing: '2px',
               textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
               e.target.style.transform = 'translateY(-3px)';
@@ -255,18 +258,19 @@ export default function Hero() {
           <button
             onClick={scrollToProjects}
             style={{
-              padding: '1.25rem 2.5rem',
+              padding: 'clamp(1rem, 2vw, 1.25rem) clamp(1.5rem, 4vw, 2.5rem)',
               background: 'transparent',
               backdropFilter: 'blur(10px)',
               color: '#fff',
               border: '2px solid rgba(255, 255, 255, 0.3)',
               borderRadius: '0',
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: '700',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               letterSpacing: '2px',
               textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
               e.target.style.background = 'rgba(255, 255, 255, 0.1)';
@@ -368,6 +372,18 @@ export default function Hero() {
     }
     50% {
       box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .hero-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+    .hero-buttons button {
+      width: 100%;
+      justify-content: center;
     }
   }
 `}</style>

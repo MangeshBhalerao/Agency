@@ -69,7 +69,7 @@ export default function Contact() {
         position: 'relative',
         // Black to dark gray gradient background
         background: 'linear-gradient(to bottom, #000000 0%, #1a1a1a 100%)',
-        padding: '6rem 1.5rem',
+        padding: 'clamp(4rem, 8vw, 6rem) 1.5rem',
       }}
     >
       <div
@@ -135,10 +135,11 @@ export default function Contact() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '3rem',
             marginBottom: '4rem',
           }}
+          className="contact-grid"
         >
           {/* Contact Form */}
           <motion.div
@@ -146,9 +147,6 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            style={{
-              gridColumn: 'span 2',
-            }}
             className="contact-form-column"
           >
             <div
@@ -164,7 +162,7 @@ export default function Contact() {
                 <div
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
                     gap: '1.5rem',
                     marginBottom: '1.5rem',
                   }}
@@ -547,9 +545,19 @@ export default function Contact() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
+          .contact-form-column {
+            grid-column: span 2 !important;
+          }
+        }
+        
+        @media (max-width: 767px) {
           .contact-form-column {
             grid-column: span 1 !important;
+          }
+          
+          .contact-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

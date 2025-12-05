@@ -41,7 +41,7 @@ export default function About() {
         position: 'relative',
         // Dark gray to black gradient background (inverted from hero)
         background: 'linear-gradient(to bottom, #1a1a1a 0%, #000000 100%)',
-        padding: '6rem 1.5rem',
+        padding: 'clamp(4rem, 8vw, 6rem) 1.5rem',
       }}
     >
       <div
@@ -108,8 +108,8 @@ export default function About() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(1.5rem, 3vw, 2rem)',
             marginBottom: '4rem',
           }}
         >
@@ -192,10 +192,10 @@ export default function About() {
             backdropFilter: 'blur(20px)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '24px',
-            padding: '3rem 2rem',
+            padding: 'clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem)',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+            gap: 'clamp(2rem, 4vw, 3rem)',
             textAlign: 'center',
           }}
         >

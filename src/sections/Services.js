@@ -55,7 +55,7 @@ export default function Services() {
         position: 'relative',
         // Dark gray to black gradient background
         background: 'linear-gradient(to bottom, #1a1a1a 0%, #000000 100%)',
-        padding: '6rem 1.5rem',
+        padding: 'clamp(4rem, 8vw, 6rem) 1.5rem',
       }}
     >
       <div
@@ -122,8 +122,8 @@ export default function Services() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-            gap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+            gap: 'clamp(1.5rem, 3vw, 2rem)',
           }}
         >
           {services.map((service, index) => {
@@ -280,8 +280,8 @@ export default function Services() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '2rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+              gap: 'clamp(1.5rem, 3vw, 2rem)',
             }}
           >
             {[

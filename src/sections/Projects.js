@@ -91,7 +91,7 @@ export default function Projects() {
         position: 'relative',
         // Black to dark gray gradient background
         background: 'linear-gradient(to bottom, #000000 0%, #1a1a1a 100%)',
-        padding: '6rem 1.5rem',
+        padding: 'clamp(4rem, 8vw, 6rem) 1.5rem',
       }}
     >
       <div
@@ -162,10 +162,11 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           style={{
             display: 'flex',
-            gap: '1rem',
+            gap: '0.75rem',
             justifyContent: 'center',
             flexWrap: 'wrap',
             marginBottom: '4rem',
+            padding: '0 0.5rem',
           }}
         >
           {filters.map((filter) => (
@@ -173,7 +174,7 @@ export default function Projects() {
               key={filter}
               onClick={() => setActiveFilter(filter)}
               style={{
-                padding: '0.75rem 1.5rem',
+                padding: 'clamp(0.625rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)',
                 background:
                   activeFilter === filter
                     ? '#ffffff'
@@ -185,10 +186,11 @@ export default function Projects() {
                     : '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '50px',
                 color: activeFilter === filter ? '#000000' : '#fff',
-                fontSize: '0.9rem',
+                fontSize: 'clamp(0.75rem, 2vw, 0.9rem)',
                 fontWeight: '600',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
+                whiteSpace: 'nowrap',
               }}
               onMouseEnter={(e) => {
                 if (activeFilter !== filter) {
@@ -218,8 +220,8 @@ export default function Projects() {
             transition={{ duration: 0.5 }}
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-              gap: '2rem',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
+              gap: 'clamp(1.5rem, 3vw, 2rem)',
             }}
           >
             {filteredProjects.map((project, index) => (

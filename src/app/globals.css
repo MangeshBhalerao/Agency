@@ -40,16 +40,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #cccccc 0%, #666666 100%);
 }
-
-/* Responsive utilities for mobile devices */
-@media (max-width: 768px) {
-  /* Show flex items on mobile */
-  .md\:flex {
-    display: flex !important;
-  }
-  
-  /* Hide items on mobile */
-  .md\:hidden {
-    display: none !important;
-  }
-}

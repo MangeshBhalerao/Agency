@@ -1,18 +1,16 @@
 'use client';
 
-// Import necessary dependencies for animations and icons
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Navigation bar component with glassmorphic design
 export default function Navbar() {
-  // State to track if page has been scrolled
+  // Track scroll position to change navbar appearance
   const [isScrolled, setIsScrolled] = useState(false);
-  // State to control mobile menu visibility
+  // Track mobile menu open/close state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Effect to handle scroll events and update navbar appearance
+  // Listen for scroll events
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -21,7 +19,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Navigation menu items
+  // Menu items
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
@@ -30,7 +28,7 @@ export default function Navbar() {
     { label: 'Contact', href: '#contact' },
   ];
 
-  // Function to smoothly scroll to a section
+  // Smooth scroll to section and close mobile menu
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -40,7 +38,6 @@ export default function Navbar() {
   };
 
   return (
-    // Fixed navigation container
     <nav
       style={{
         position: 'fixed',
@@ -51,6 +48,7 @@ export default function Navbar() {
         transition: 'all 0.3s ease',
       }}
     >
+      {/* Main navbar container */}
       <div
         style={{
           background: isScrolled
@@ -60,9 +58,7 @@ export default function Navbar() {
           borderBottom: isScrolled
             ? '1px solid rgba(255, 255, 255, 0.1)'
             : '1px solid rgba(255, 255, 255, 0.05)',
-          boxShadow: isScrolled
-            ? '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
-            : 'none',
+          boxShadow: isScrolled ? '0 8px 32px 0 rgba(0, 0, 0, 0.37)' : 'none',
           transition: 'all 0.3s ease',
         }}
       >
@@ -70,19 +66,19 @@ export default function Navbar() {
           style={{
             maxWidth: '1280px',
             margin: '0 auto',
-            padding: '1rem 1.5rem',
+            padding: '12px 24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          {/* Logo */}
+          {/* Logo - Always visible */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             style={{
-              fontSize: '1.75rem',
+              fontSize: '28px',
               fontWeight: '700',
               fontFamily: 'Horizon, var(--font-montserrat), sans-serif',
               color: '#ffffff',
@@ -95,14 +91,13 @@ export default function Navbar() {
             HORIZON
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <div
-            style={{
-              display: 'none',
-              gap: '2rem',
-              alignItems: 'center',
+          {/* Desktop Menu - Only visible on large screens */}
+          <div 
+            className="hidden md:flex"
+            style={{ 
+              gap: '32px', 
+              alignItems: 'center' 
             }}
-            className="md:flex"
           >
             {navItems.map((item, index) => (
               <motion.button
@@ -113,10 +108,10 @@ export default function Navbar() {
                 onClick={() => scrollToSection(item.href)}
                 style={{
                   color: 'rgba(255, 255, 255, 0.8)',
-                  fontSize: '0.9rem',
+                  fontSize: '14px',
                   fontWeight: '500',
                   position: 'relative',
-                  padding: '0.5rem 0',
+                  padding: '8px 0',
                   background: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
@@ -130,33 +125,21 @@ export default function Navbar() {
                 }}
               >
                 {item.label}
-                <span
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    width: '0%',
-                    height: '2px',
-                    background: '#ffffff',
-                    transition: 'width 0.3s ease',
-                  }}
-                  className="nav-underline"
-                />
               </motion.button>
             ))}
-            
+
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               onClick={() => scrollToSection('#contact')}
               style={{
-                padding: '0.75rem 1.5rem',
+                padding: '12px 24px',
                 background: '#ffffff',
                 color: '#000000',
                 border: 'none',
                 borderRadius: '8px',
-                fontSize: '0.9rem',
+                fontSize: '14px',
                 fontWeight: '600',
                 cursor: 'pointer',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
@@ -174,25 +157,25 @@ export default function Navbar() {
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Hamburger Button - Only visible on small screens */}
           <button
+            className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             style={{
-              display: 'block',
               background: 'transparent',
               border: 'none',
               color: '#fff',
               cursor: 'pointer',
-              padding: '0.5rem',
+              padding: '8px',
+              zIndex: 100,
             }}
-            className="md:hidden"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -206,26 +189,18 @@ export default function Navbar() {
               borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
               overflow: 'hidden',
             }}
-            className="md:hidden"
           >
-            <div
-              style={{
-                padding: '1.5rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1rem',
-              }}
-            >
+            <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
                   style={{
                     color: 'rgba(255, 255, 255, 0.8)',
-                    fontSize: '1rem',
+                    fontSize: '16px',
                     fontWeight: '500',
                     textAlign: 'left',
-                    padding: '0.75rem',
+                    padding: '12px',
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
@@ -247,15 +222,15 @@ export default function Navbar() {
               <button
                 onClick={() => scrollToSection('#contact')}
                 style={{
-                  padding: '0.75rem 1.5rem',
+                  padding: '12px 24px',
                   background: '#ffffff',
                   color: '#000000',
                   border: 'none',
                   borderRadius: '8px',
-                  fontSize: '1rem',
+                  fontSize: '16px',
                   fontWeight: '600',
                   cursor: 'pointer',
-                  marginTop: '0.5rem',
+                  marginTop: '8px',
                 }}
               >
                 Get Started
@@ -264,12 +239,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <style jsx>{`
-        button:hover .nav-underline {
-          width: 100% !important;
-        }
-      `}</style>
     </nav>
   );
 }
