@@ -11,70 +11,71 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
 
   // Array of filter categories
-  const filters = ['All', 'Web Development', 'UX/UI Design', 'E-Commerce', 'SaaS'];
+  // const filters = ['All', 'Web Development', 'UX/UI Design', 'E-Commerce', 'SaaS'];
+  const filters = ['All', 'Agency'];
 
   // Projects data array with details for each project
   const projects = [
     {
       id: 1,
-      title: 'TechCorp Dashboard',
+      title: 'Real Estate Dashboard',
       description: 'A modern analytics dashboard with real-time data visualization and advanced reporting features.',
-      category: 'SaaS',
+      category: 'Agency',
       tech: ['React', 'Node.js', 'MongoDB'],
-      image: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      live: '#',
+      image: '/realestate.png',
+      live: 'https://real-estate-woad-chi.vercel.app/',
       github: '#',
     },
-    {
-      id: 2,
-      title: 'LuxeShop',
-      description: 'Premium e-commerce platform with seamless checkout and inventory management.',
-      category: 'E-Commerce',
-      tech: ['Next.js', 'Stripe', 'PostgreSQL'],
-      image: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      live: '#',
-      github: '#',
-    },
-    {
-      id: 3,
-      title: 'DesignStudio Portfolio',
-      description: 'Minimalist portfolio showcasing creative work with smooth animations.',
-      category: 'UX/UI Design',
-      tech: ['React', 'Framer Motion', 'Tailwind'],
-      image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      live: '#',
-      github: '#',
-    },
-    {
-      id: 4,
-      title: 'HealthTrack App',
-      description: 'Health monitoring platform with AI-powered insights and personalized recommendations.',
-      category: 'SaaS',
-      tech: ['Vue.js', 'Python', 'TensorFlow'],
-      image: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-      live: '#',
-      github: '#',
-    },
-    {
-      id: 5,
-      title: 'CryptoTrade Platform',
-      description: 'Cryptocurrency trading platform with real-time market data and secure transactions.',
-      category: 'Web Development',
-      tech: ['React', 'Web3.js', 'Solidity'],
-      image: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-      live: '#',
-      github: '#',
-    },
-    {
-      id: 6,
-      title: 'FoodHub Delivery',
-      description: 'Food delivery app with live tracking and seamless ordering experience.',
-      category: 'E-Commerce',
-      tech: ['React Native', 'Firebase', 'Maps API'],
-      image: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
-      live: '#',
-      github: '#',
-    },
+    // {
+    //   id: 2,
+    //   title: 'LuxeShop',
+    //   description: 'Premium e-commerce platform with seamless checkout and inventory management.',
+    //   category: 'E-Commerce',
+    //   tech: ['Next.js', 'Stripe', 'PostgreSQL'],
+    //   image: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    //   live: '#',
+    //   github: '#',
+    // },
+    // {
+    //   id: 3,
+    //   title: 'DesignStudio Portfolio',
+    //   description: 'Minimalist portfolio showcasing creative work with smooth animations.',
+    //   category: 'UX/UI Design',
+    //   tech: ['React', 'Framer Motion', 'Tailwind'],
+    //   image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    //   live: '#',
+    //   github: '#',
+    // },
+    // {
+    //   id: 4,
+    //   title: 'HealthTrack App',
+    //   description: 'Health monitoring platform with AI-powered insights and personalized recommendations.',
+    //   category: 'SaaS',
+    //   tech: ['Vue.js', 'Python', 'TensorFlow'],
+    //   image: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+    //   live: '#',
+    //   github: '#',
+    // },
+    // {
+    //   id: 5,
+    //   title: 'CryptoTrade Platform',
+    //   description: 'Cryptocurrency trading platform with real-time market data and secure transactions.',
+    //   category: 'Web Development',
+    //   tech: ['React', 'Web3.js', 'Solidity'],
+    //   image: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    //   live: '#',
+    //   github: '#',
+    // },
+    // {
+    //   id: 6,
+    //   title: 'FoodHub Delivery',
+    //   description: 'Food delivery app with live tracking and seamless ordering experience.',
+    //   category: 'E-Commerce',
+    //   tech: ['React Native', 'Firebase', 'Maps API'],
+    //   image: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+    //   live: '#',
+    //   github: '#',
+    // },
   ];
 
   const filteredProjects =
@@ -253,23 +254,43 @@ export default function Projects() {
                 <div
                   style={{
                     height: '200px',
-                    background: project.image,
                     position: 'relative',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    overflow: 'hidden',
+                    background: project.image.startsWith('/') ? '#1a1a1a' : project.image,
                   }}
                 >
-                  <div
-                    style={{
-                      fontSize: '3rem',
-                      fontWeight: '800',
-                      color: 'rgba(255, 255, 255, 0.9)',
-                      textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-                    }}
-                  >
-                    {project.title.split(' ')[0]}
-                  </div>
+                  {project.image.startsWith('/') ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: '3rem',
+                          fontWeight: '800',
+                          color: 'rgba(255, 255, 255, 0.9)',
+                          textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                        }}
+                      >
+                        {project.title.split(' ')[0]}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Project Content */}
