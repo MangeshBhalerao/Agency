@@ -99,7 +99,7 @@ export default function About() {
               lineHeight: '1.8',
             }}
           >
-            We're not just another development agency. We're a team of passionate innovators
+            We&apos;re not just another development agency. We&apos;re a team of passionate innovators
             who transform ambitious ideas into exceptional digital realities that drive real results.
           </p>
         </motion.div>

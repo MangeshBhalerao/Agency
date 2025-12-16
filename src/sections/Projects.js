@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Filter } from 'lucide-react';
+import Image from 'next/image';
 
 // Projects section - Displays filterable portfolio
 export default function Projects() {
