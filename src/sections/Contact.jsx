@@ -118,8 +118,8 @@ export default function Contact() {
               lineHeight: '1.8',
             }}
           >
-            Ready to start your next project? We're here to help bring your vision to life.
-            Drop us a message and we'll get back to you as soon as possible.
+            Ready to start your next project? We&apos;re here to help bring your vision to life.
+            Drop us a message and we&apos;ll get back to you as soon as possible.
           </p>
         </motion.div>
 

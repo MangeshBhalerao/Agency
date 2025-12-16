@@ -324,7 +324,7 @@ export default function Services() {
                     fontStyle: 'italic',
                   }}
                 >
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
                 <div>
                   <div

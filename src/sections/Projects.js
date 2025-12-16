@@ -260,12 +260,11 @@ export default function Projects() {
                   }}
                 >
                   {project.image.startsWith('/') ? (
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
+                      fill
                       style={{
-                        width: '100%',
-                        height: '100%',
                         objectFit: 'cover',
                       }}
                     />
