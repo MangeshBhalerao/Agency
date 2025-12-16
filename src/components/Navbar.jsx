@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Navbar() {
   // Track scroll position to change navbar appearance
@@ -78,17 +79,20 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             style={{
-              fontSize: '28px',
-              fontWeight: '700',
-              fontFamily: 'Horizon, var(--font-montserrat), sans-serif',
-              color: '#ffffff',
               cursor: 'pointer',
-              letterSpacing: '4px',
-              textTransform: 'uppercase',
+              display: 'flex',
+              alignItems: 'center',
             }}
             onClick={() => scrollToSection('#home')}
           >
-            HORIZON
+            <Image 
+              src="/Logo.png" 
+              alt="Logo" 
+              width={80} 
+              height={50}
+              style={{ objectFit: 'contain' }}
+              priority
+            />
           </motion.div>
 
           {/* Desktop Menu - Only visible on large screens */}

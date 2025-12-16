@@ -3,7 +3,7 @@
 // Import motion library for animations and icons
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
-
+import Image from 'next/image';
 // Hero section - Main landing page component
 export default function Hero() {
   // Function to scroll to contact section
@@ -132,10 +132,11 @@ export default function Hero() {
             backdropFilter: 'blur(10px)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '50px',
-            marginBottom: '2rem',
+            marginBottom: '1.5rem',
+            marginTop: '2rem',
           }}
         >
-          <Sparkles size={16} style={{ color: '#ffffff' }} />
+          <Sparkles size={14} style={{ color: '#ffffff' }} />
           <span
             style={{
               fontSize: '0.875rem',
@@ -147,29 +148,77 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Main Heading with animated gradient */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        {/* Main Heading with brush stroke animation */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 1.2,
+            delay: 0.2,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
           style={{
-            fontSize: 'clamp(3rem, 10vw, 7rem)',
-            fontWeight: '800',
-            lineHeight: '1.1',
-            marginBottom: '1.5rem',
-            fontFamily: 'Horizon, var(--font-montserrat), sans-serif',
-            letterSpacing: '8px',
-            textTransform: 'uppercase',
-            background: 'linear-gradient(90deg, #ffffff 0%, #888888 50%, #ffffff 100%)',
-            backgroundSize: '200% auto',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            animation: 'shine 3s linear infinite',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '2rem',
+            position: 'relative',
           }}
         >
-          HORIZON
-        </motion.h1>
+          <motion.div
+            initial={{ 
+              clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)',
+              filter: 'blur(10px)',
+            }}
+            animate={{ 
+              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+              filter: 'blur(0px)',
+            }}
+            transition={{
+              duration: 1.5,
+              delay: 0.4,
+              ease: [0.65, 0, 0.35, 1],
+            }}
+            style={{
+              position: 'relative',
+              width: '100%',
+              maxWidth: 'min(600px, 90vw)',
+              height: 'auto',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <motion.div
+              animate={{
+                y: [0, -5, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Image 
+                src="/Logo.png" 
+                alt="Logo" 
+                width={600} 
+                height={285}
+                style={{ 
+                  objectFit: 'contain',
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '600px',
+                }}
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* Subtitle with emphasis */}
         <motion.p
