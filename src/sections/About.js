@@ -88,7 +88,7 @@ export default function About() {
               lineHeight: '1.2',
             }}
           >
-            Building Tomorrow's Digital Experiences
+            Building Tomorrow&apos;s Digital Experiences
           </h2>
           <p
             style={{
