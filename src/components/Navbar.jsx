@@ -86,7 +86,7 @@ export default function Navbar() {
             onClick={() => scrollToSection('#home')}
           >
             <Image 
-              src="/Logo.png" 
+              src="/Logo.svg" 
               alt="Logo" 
               width={80} 
               height={50}

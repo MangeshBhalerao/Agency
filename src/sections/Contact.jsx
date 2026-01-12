@@ -365,17 +365,18 @@ export default function Contact() {
           </motion.div> */}
 
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{
-              display: 'flex',
-              gap: '32px',
-            }}
-          >
-            {contactInfo.map((info, index) => {
+                <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  display: 'flex',
+                  gap: '32px',
+                }}
+                className="flex-col md:flex-row"
+                >
+                {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
                 <div

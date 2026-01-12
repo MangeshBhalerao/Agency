@@ -136,8 +136,8 @@ export default function Hero() {
             marginTop: '2rem',
           }}
         >
-          <Sparkles size={14} style={{ color: '#ffffff' }} />
-          <span
+          {/* <Sparkles size={14} style={{ color: '#ffffff' }} /> */}
+          {/* <span
             style={{
               fontSize: '0.875rem',
               color: 'rgba(255, 255, 255, 0.9)',
@@ -145,7 +145,7 @@ export default function Hero() {
             }}
           >
             Innovative Digital Solutions
-          </span>
+          </span> */}
         </motion.div>
 
         {/* Main Heading with brush stroke animation */}
@@ -161,7 +161,7 @@ export default function Hero() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: '2rem',
+            marginBottom: '1rem',
             position: 'relative',
           }}
         >
@@ -206,13 +206,13 @@ export default function Hero() {
               <Image 
                 src="/Logo.png" 
                 alt="Logo" 
-                width={600} 
-                height={285}
+                width={400} 
+                height={185}
                 style={{ 
                   objectFit: 'contain',
                   width: '100%',
                   height: 'auto',
-                  maxWidth: '600px',
+                  maxWidth: '400px',
                 }}
                 priority
               />
