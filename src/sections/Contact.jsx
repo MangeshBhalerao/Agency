@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send, MapPin, Phone, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Send, MapPin, Phone, Instagram } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -30,27 +30,28 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      value: 'hello@agency.com',
-      link: 'mailto:hello@agency.com',
+      value: 'info@stillworks.in',
+      // link: 'info@stillworks.in',
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      value: ['+919987231107\n',
+              '+919820794731\n',
+              '+917738665676']
+      
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Mumbai, India',
       link: '#',
     },
   ];
 
   const socialLinks = [
-    { icon: Github, link: '#', label: 'GitHub' },
-    { icon: Linkedin, link: '#', label: 'LinkedIn' },
-    { icon: Twitter, link: '#', label: 'Twitter' },
+    
+    { icon: Instagram, link: 'https://www.instagram.com/stillworks.in?utm_source=qr', label: 'Instagram' },
   ];
 
   return (
@@ -131,7 +132,7 @@ export default function Contact() {
           }}
           className="grid-cols-1 md:grid-cols-3"
         >
-          {/* Contact Form */}
+          {/* Contact Form
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -361,7 +362,7 @@ export default function Contact() {
                 </button>
               </form>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Contact Info */}
           <motion.div
@@ -371,7 +372,6 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             style={{
               display: 'flex',
-              flexDirection: 'column',
               gap: '32px',
             }}
           >
@@ -385,6 +385,7 @@ export default function Contact() {
                     backdropFilter: 'blur(20px)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                     borderRadius: '20px',
+                    width: '100%',
                     padding: '24px',
                     transition: 'all 0.3s ease',
                   }}
@@ -529,7 +530,7 @@ export default function Contact() {
               fontSize: '15px',
             }}
           >
-            © {new Date().getFullYear()} AGENCY. All rights reserved. Built with passion and innovation.
+            © {new Date().getFullYear()} stillworks. All rights reserved. Built with passion and innovation.
           </p>
         </motion.div>
       </div>
