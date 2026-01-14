@@ -126,11 +126,11 @@ export default function Contact() {
 
         <div
           style={{
-            display: 'grid',
+            display: 'flex',
+            flexDirection: 'column',
             gap: '48px',
             marginBottom: '64px',
           }}
-          className="grid-cols-1 md:grid-cols-3"
         >
           {/* Contact Form
           <motion.div
@@ -371,10 +371,11 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
                 style={{
-                  display: 'flex',
-                  gap: '32px',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr',
+                  gap: '24px',
                 }}
-                className="flex-col md:flex-row"
+                className="md:grid-cols-4"
                 >
                 {contactInfo.map((info, index) => {
               const Icon = info.icon;
@@ -386,9 +387,13 @@ export default function Contact() {
                     backdropFilter: 'blur(20px)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                     borderRadius: '20px',
-                    width: '100%',
-                    padding: '24px',
+                    padding: '32px',
                     transition: 'all 0.3s ease',
+                    minWidth: 0,
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
@@ -415,32 +420,48 @@ export default function Contact() {
                   </div>
                   <h4
                     style={{
-                      fontSize: '16px',
+                      fontSize: '14px',
                       fontWeight: '600',
                       color: 'rgba(255, 255, 255, 0.7)',
-                      marginBottom: '8px',
+                      marginBottom: '12px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
                     }}
                   >
                     {info.title}
                   </h4>
-                  <a
-                    href={info.link}
+                  <div
                     style={{
-                      fontSize: '18px',
+                      fontSize: '16px',
                       fontWeight: '600',
                       color: '#fff',
-                      textDecoration: 'none',
-                      transition: 'color 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.color = '#ffffff';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.color = '#fff';
+                      wordBreak: 'break-word',
+                      overflowWrap: 'break-word',
+                      whiteSpace: 'pre-line',
+                      lineHeight: '1.6',
                     }}
                   >
-                    {info.value}
-                  </a>
+                    {info.link ? (
+                      <a
+                        href={info.link}
+                        style={{
+                          color: '#fff',
+                          textDecoration: 'none',
+                          transition: 'color 0.3s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.color = '#ffffff';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.color = '#fff';
+                        }}
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      info.value
+                    )}
+                  </div>
                 </div>
               );
             })}
@@ -452,15 +473,37 @@ export default function Contact() {
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '20px',
-                padding: '24px',
+                padding: '32px',
+                transition: 'all 0.3s ease',
+                minWidth: 0,
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
               }}
             >
+              <div
+                style={{
+                  width: '50px',
+                  height: '50px',
+                  background: '#ffffff',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '16px',
+                }}
+              >
+                <Instagram size={24} style={{ color: '#000000' }} />
+              </div>
               <h4
                 style={{
-                  fontSize: '16px',
+                  fontSize: '14px',
                   fontWeight: '600',
                   color: 'rgba(255, 255, 255, 0.7)',
-                  marginBottom: '16px',
+                  marginBottom: '12px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
                 }}
               >
                 Follow Us
@@ -479,32 +522,20 @@ export default function Contact() {
                       href={social.link}
                       aria-label={social.label}
                       style={{
-                        width: '45px',
-                        height: '45px',
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'rgba(255, 255, 255, 0.7)',
-                        transition: 'all 0.3s ease',
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        color: '#fff',
                         textDecoration: 'none',
+                        transition: 'color 0.3s ease',
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = '#ffffff';
-                        e.currentTarget.style.borderColor = 'transparent';
-                        e.currentTarget.style.color = '#000000';
-                        e.currentTarget.style.transform = 'translateY(-3px)';
+                        e.target.style.color = 'rgba(255, 255, 255, 0.7)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)';
-                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.target.style.color = '#fff';
                       }}
                     >
-                      <Icon size={20} />
+                      Instagram
                     </a>
                   );
                 })}
