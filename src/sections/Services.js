@@ -148,13 +148,10 @@ export default function Services() {
                   overflow: 'hidden',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(255, 255, 255, 0.9)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
