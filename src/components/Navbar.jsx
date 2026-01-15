@@ -20,6 +20,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   // Menu items
   const navItems = [
     { label: 'Home', href: '#home' },
@@ -188,13 +200,18 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             style={{
-              background: 'rgba(10, 10, 15, 0.95)',
+              position: 'fixed',
+              top: '76px',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(10, 10, 15, 0.98)',
               backdropFilter: 'blur(20px)',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-              overflow: 'hidden',
+              zIndex: 40,
+              overflowY: 'auto',
             }}
           >
-            <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', minHeight: '100%' }}>
               {navItems.map((item) => (
                 <button
                   key={item.label}

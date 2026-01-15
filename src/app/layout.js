@@ -20,12 +20,20 @@ const montserrat = Montserrat({
 export const metadata = {
   title: "AGENCY - Your Digital Future Starts Here",
   description: "Innovative development agency specializing in creating extraordinary digital experiences that push the boundaries of innovation.",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 // Root layout component - Wraps entire application
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+      </head>
       {/* Apply font variables and basic styling */}
       <body
         className={`${inter.variable} ${montserrat.variable} antialiased`}

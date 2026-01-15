@@ -372,10 +372,9 @@ export default function Contact() {
                 transition={{ duration: 0.8 }}
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: '1fr',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
                   gap: '24px',
                 }}
-                className="md:grid-cols-4"
                 >
                 {contactInfo.map((info, index) => {
               const Icon = info.icon;

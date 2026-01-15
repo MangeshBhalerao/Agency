@@ -141,7 +141,7 @@ export default function Services() {
                   backdropFilter: 'blur(20px)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
                   borderRadius: '24px',
-                  padding: '2.5rem',
+                  padding: 'clamp(1.5rem, 3vw, 2.5rem)',
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                   position: 'relative',

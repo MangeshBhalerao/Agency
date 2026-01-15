@@ -18,6 +18,14 @@ body {
   background: #000000;
   color: #ffffff;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Prevent horizontal scroll on all elements */
+* {
+  max-width: 100%;
 }
 
 /* Custom scrollbar styling */
