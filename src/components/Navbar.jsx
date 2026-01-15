@@ -79,7 +79,7 @@ export default function Navbar() {
           style={{
             maxWidth: '1280px',
             margin: '0 auto',
-            padding: '12px 24px',
+            padding: '6px 24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -201,11 +201,12 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             style={{
               position: 'fixed',
-              top: '76px',
+              top: '100px',
+              borderRadius: '8px',
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'rgba(10, 10, 15, 0.98)',
+              background: 'rgba(10, 10, 15, 0.9)',
               backdropFilter: 'blur(20px)',
               zIndex: 40,
               overflowY: 'auto',
