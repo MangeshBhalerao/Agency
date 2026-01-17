@@ -122,8 +122,9 @@ export default function Services() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
-            gap: 'clamp(1.5rem, 3vw, 2rem)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(1rem, 3vw, 2rem)',
+            width: '100%',
           }}
         >
           {services.map((service, index) => {
@@ -131,8 +132,8 @@ export default function Services() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
@@ -140,12 +141,14 @@ export default function Services() {
                   background: 'rgba(255, 255, 255, 0.03)',
                   backdropFilter: 'blur(20px)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '24px',
-                  padding: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  borderRadius: '20px',
+                  padding: 'clamp(1.25rem, 4vw, 2.5rem)',
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                   position: 'relative',
                   overflow: 'hidden',
+                  width: '100%',
+                  boxSizing: 'border-box',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow = '0 20px 60px rgba(255, 255, 255, 0.9)';
@@ -174,26 +177,28 @@ export default function Services() {
                   {/* Icon */}
                   <div
                     style={{
-                      width: '70px',
-                      height: '70px',
+                      width: 'clamp(50px, 10vw, 70px)',
+                      height: 'clamp(50px, 10vw, 70px)',
                       background: '#ffffff',
-                      borderRadius: '18px',
+                      borderRadius: '16px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: '1.5rem',
+                      marginBottom: '1.25rem',
+                      flexShrink: 0,
                     }}
                   >
-                    <Icon size={32} style={{ color: '#000000' }} />
+                    <Icon size={28} style={{ color: '#000000' }} />
                   </div>
 
                   {/* Title */}
                   <h3
                     style={{
-                      fontSize: '1.75rem',
+                      fontSize: 'clamp(1.25rem, 4vw, 1.75rem)',
                       fontWeight: '700',
                       color: '#fff',
                       marginBottom: '1rem',
+                      wordBreak: 'break-word',
                     }}
                   >
                     {service.title}
