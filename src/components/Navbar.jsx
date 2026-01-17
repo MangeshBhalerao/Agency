@@ -43,11 +43,21 @@ export default function Navbar() {
 
   // Smooth scroll to section and close mobile menu
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+    setIsMobileMenuOpen(false);
+    
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const navbarHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -79,7 +89,7 @@ export default function Navbar() {
           style={{
             maxWidth: '1280px',
             margin: '0 auto',
-            padding: '6px 24px',
+            padding: '2px 24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -217,17 +227,22 @@ export default function Navbar() {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
+                  onTouchEnd={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
                   style={{
                     color: 'rgba(255, 255, 255, 0.8)',
-                    fontSize: '16px',
+                    fontSize: '18px',
                     fontWeight: '500',
                     textAlign: 'left',
-                    padding: '12px',
+                    padding: '16px',
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
                     borderRadius: '8px',
+                    WebkitTapHighlightColor: 'transparent',
                   }}
                   onMouseEnter={(e) => {
                     e.target.style.background = 'rgba(255, 255, 255, 0.05)';
@@ -243,8 +258,12 @@ export default function Navbar() {
               ))}
               <button
                 onClick={() => scrollToSection('#contact')}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  scrollToSection('#contact');
+                }}
                 style={{
-                  padding: '12px 24px',
+                  padding: '16px 24px',
                   background: '#ffffff',
                   color: '#000000',
                   border: 'none',
@@ -253,6 +272,7 @@ export default function Navbar() {
                   fontWeight: '600',
                   cursor: 'pointer',
                   marginTop: '8px',
+                  WebkitTapHighlightColor: 'transparent',
                 }}
               >
                 Get Started
